@@ -1,0 +1,481 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>canvas</title>
+		<link rel="stylesheet" type="text/css" href="http://7xngm3.com1.z0.glb.clouddn.com/bootstrap.min.css"/>
+		<style>
+			.bg_yellow{
+				background-color: #20b2aa;	
+			}
+			strong{
+				transition: all 1s;
+				-webkit-transition: all 1s;
+			}
+			.col-lg-1 {
+				padding: 0px;
+				margin-left: -15px;
+			}
+			.col-lg-1 li{
+				display: block;
+				position: relative;
+				float: left;
+				
+				height: 30px;
+				width: 100%;
+				left: 0px;
+				
+				border-bottom: 1px solid red;
+			}
+			.col-lg-11 p{
+				height: 20px;
+			}
+			strong{
+				height: 20px;
+				line-height: 20px;
+			}
+			#codeNum li{
+				display:block;
+				cursor: pointer;
+			}
+			#codeNum li img{
+				display:none;
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span>选择排序<em style="color:red" id="select_sort_count"></em></span>
+			</div>
+	   		<div class="panel-body">
+				<canvas id="canvas" width="1200px" height="200px" style="margin:0px auto;border:1px solid red">
+					
+				</canvas>
+			</div>
+		</div>
+		<div class="panel panel-default">
+	   		<div class="panel-body">
+	   			<div class="col-lg-3">
+
+			     	<button id="refresh" type="button" class="btn btn-success">刷新</button>
+					<button id="startSort" type="button" class="btn btn-success" data-haveClick="false">启动排序</button>
+					<button id="stopSort" type="button" class="btn btn-success disabled" data-haveClick="true">停止排序</button>
+					<button id="jixu" type="button" class="btn btn-success" data-haveClick="true" style="display:none">继续运行</button>
+					<textarea name="dug_log" style="margin-top: 20px;width:300px;height:400px"></textarea>
+		   		</div>
+		   		<div class="col-lg-9" style="border: 1px solid red;">
+		   			<div id="codeNum" class="col-lg-1" style="height: 100%;border-right: 1px solid red;">
+		   				<li><span>1<span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"></li>
+		   				<li><span>2</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>3</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>4</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>5</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>6</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>7</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>8</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>9</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>10</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>11</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>12</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>13</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>14</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>15</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   				<li><span>16</span><img src="http://7xngm3.com1.z0.glb.clouddn.com/yuanxing.svg" width="20" height="20"</li>
+		   			</div>
+		   			<div class="col-lg-11">
+		   			<p>
+		   			<strong >function selectSort(){</strong>
+		   			</p>
+		   			<p style="margin-top: 8px;"/>
+					<strong style="margin-left: 20px;">for(var i=0;i < num_array.length;i++){</strong>
+					<p/>
+					<strong style="margin-left: 60px;">min = num_array[i];</strong>
+					<p/>
+					<strong style="margin-left: 60px;">k= i ;</strong>
+					<p/>
+					<strong style="margin-left: 60px;">for(var j=i+1;j < num_array.length;j++){</strong>
+					<p/>
+					<strong style="margin-left: 100px;">if(min.num > num_array[j].num){</strong>
+					<p/>
+					<strong  style="margin-left: 120px;">min = num_array[j];</strong>
+					<p/>
+					<strong  style="margin-left: 120px;">k = j;</strong>
+					<p/>			
+					<strong style="margin-left: 100px;">}</strong>
+					<p/>
+					<strong style="margin-left: 60px;">}</strong>
+					<p/>
+					<strong style="margin-left: 60px;">if( k != i ){</strong>
+					<p/>
+					<strong style="margin-left: 80px;">num_array[k] = num_array[i];</strong>
+					<p/>
+					<strong style="margin-left: 80px;">num_array[i] = _min;</strong>
+		   			<p/>
+		   			<strong style="margin-left: 60px;">}</strong>
+		   			<p/>
+		   			<strong style="margin-left: 20px;">}</strong>
+		   			<p/>
+		   			<strong style="margin-left: 0px;">}</strong>
+		   			</div>
+		   		</div>
+	   		</div>
+		   
+		</div>
+	
+		<!--jquery-->
+		<script type="text/javascript" src="http://7xngm3.com1.z0.glb.clouddn.com/jquery.min.js" ></script>
+		<!--jcanvas ,封装的canvas常用API的js类库-->
+		<script type="text/javascript" src="http://7xngm3.com1.z0.glb.clouddn.com/jcanvas.min.js" ></script>
+		<script>
+		
+		/**
+		 * 以下操作定义全局变量，并初始化
+		 */
+		//定义随机颜色数组，用以随机小球的背景色
+		const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"];
+		//定义需要排序的数组集合
+		var num_array = [];
+		//定义需要移动的数组索引下标集合,用来保存需要移动的数组元素的下标
+		var record_index_select = [];
+		//定义中间数组，该数组保存未排序的原始数组集合
+		var num_array_copy =[];
+		//计时器变量声明，用以停止计时器
+		var timeOut_select,code_timeout;
+		//定义遍历索引下标数组的游标变量
+		var cons_select = 0;
+		
+		
+		var count = 0;
+		var code_run_row_num = [];
+		var strong_list = $("p");
+		var li_list = $("li");
+		var ball_is_move_ok = false;
+		var ball_is_move = false;
+		var debug_code_num = [];
+		//初始化数组，并渲染到canvs中
+		createNumArray();
+		
+		//排序数组，用以初始化需要移动索引信息
+		selectSort();
+		
+		//代码运行轨迹
+		
+		/**
+		 * 绘制所有小球
+		 */
+		function rednder(){
+			$('canvas').clearCanvas();
+			for (var i = 0; i < num_array.length; i++) {
+				drawDigit(num_array[i]);
+			}
+		}
+		/**
+		 * 更新小球的位置x
+		 */
+		function update() {
+			//如果游标在record_index_select数组中移动的次数大于了数组的长度，代表已经执行完动画，可以结束
+			if(cons_select >= record_index_select.length){
+				//改变按钮状态
+				changeButtonStatus("#startSort_select",true);
+				changeButtonStatus("#sopSort_select",false);
+				//停止计时器
+				window.clearTimeout(timeOut_select);
+				//显示排序信息
+				$("#select_sort_count").html("排序完成，经过了"+record_index_select.length+"次移动数据");
+				//继续代码块的运行
+				code_timeout = setTimeout("showCodeRunThread()",100);
+				return ;
+			}
+			//如果是第一次排序
+			if(cons_select ==0 ){
+				
+			
+			//在副本数组中，选择游标数组中的第一条记录所指向的要移动小球的下标index，
+			//选择此小球，设置它的目标x位置等于目标小球record_index_select[cons_select].//aims的索引的x坐标
+				num_array_copy[record_index_select[cons_select].index].target_x = num_array_copy[record_index_select[cons_select].aims].x;
+			//移动是相互的，所以也要设置目标小球移动的目标位置如6和4交换，6要移动到4，
+			//4也需要移动到6
+				num_array_copy[record_index_select[cons_select].aims].target_x =num_array_copy[record_index_select[cons_select].index].x; 
+				//游标加一，代表完成了对记录移动信息的数组的一次移动
+				cons_select+=1;
+				
+			}
+			//如果正在移动小球的x位置等于它的目标位置，则可以判断运动完成
+			//选择cons_select的上一个元素是因为cons_select初始时已经是1，而再开始
+			//时record_index_select[1]所代表的小球是没有定义好相应的目标位置信息的，所以要、
+			//减去1，即移动记录信息数组的上一个元素
+			if(num_array_copy[record_index_select[cons_select-1].index].x == num_array_copy[record_index_select[cons_select-1].index].target_x){
+				//如果是最后一次移动，则游标+1直接返回
+				if(cons_select == record_index_select.length){
+					cons_select+=1;
+					return 
+				}
+				//交换数字
+				var temp = num_array_copy[record_index_select[cons_select-1].index];
+				num_array_copy[record_index_select[cons_select-1].index] = num_array_copy[record_index_select[cons_select-1].aims];
+				
+				num_array_copy[record_index_select[cons_select-1].aims] = temp;
+				
+				num_array_copy[record_index_select[cons_select].index].target_x = num_array_copy[record_index_select[cons_select].aims].x;
+				
+				num_array_copy[record_index_select[cons_select].aims].target_x = num_array_copy[record_index_select[cons_select].index].x;
+				
+				
+				cons_select+=1;
+				window.clearTimeout(timeOut_select);
+				ball_is_move_ok = true;
+				ball_is_move = false;
+				code_timeout = setTimeout("showCodeRunThread()",500);
+				
+			}else {
+					//小球移动，移动的小球每次坐标+1，被移动的目标小球每次-1
+					num_array_copy[record_index_select[cons_select-1].index].x +=1;
+					num_array_copy[record_index_select[cons_select-1].aims].x -=1;
+			}
+			
+		}
+		/**
+		 *	选择排序，用以产生需要移动的小球的下标索引信息
+		 * @param {Object} num_array
+		 */
+		function selectSort(){
+			code_run_row_num.push(0);
+			
+			for(var i=0;i<num_array.length;i++){
+				
+				code_run_row_num.push(1);
+				
+				_min = num_array[i];
+				
+				code_run_row_num.push(2);
+				
+				k= i ;
+				
+				code_run_row_num.push(3);
+				
+				for(var j=i+1;j<num_array.length;j++){
+					code_run_row_num.push(4);
+					code_run_row_num.push(5);
+					if(_min.num > num_array[j].num){
+						
+						_min = num_array[j];
+						code_run_row_num.push(6);
+						k = j;
+						code_run_row_num.push(7);
+					}
+					code_run_row_num.push(8);
+					
+					code_run_row_num.push(4);
+				}
+				code_run_row_num.push(9);
+				code_run_row_num.push(10);
+				if( k != i ){
+					
+					//每一躺排序后保存需要移动的小球的下标信息和目标信息
+					var num_nedd_move = {
+						index:i,
+						aims:k
+					};
+					record_index_select.push(num_nedd_move);
+					//交换数字
+					
+					num_array[k] = num_array[i];
+					code_run_row_num.push(11);
+					num_array[i] = _min;
+					code_run_row_num.push(12);
+				}
+				code_run_row_num.push(13);
+				code_run_row_num.push(1);
+			}
+			code_run_row_num.push(14);
+			code_run_row_num.push(15);
+		}
+		/**
+		 * 产生随机数字数组，并渲染到画布中
+		 */
+		function createNumArray(){
+			for(var i=0;i<10;i++){
+				//随机产生的数字
+				var random_num = Math.floor( Math.random()*100);
+				
+				var num_block = {
+					x:(i*2+1)*60,
+					y:100,
+					num:random_num,
+					bc_color:colors[ Math.floor( Math.random()*colors.length)],
+					num_color:colors[ Math.floor( Math.random()*colors.length)]
+				}
+				
+				num_array.push(num_block);
+				num_array_copy.push(num_block);
+				drawDigit(num_block);
+			}
+			
+		}
+		
+		/**
+		 * 渲染单个小球块
+		 */
+		function drawDigit(num_block){
+			var bc_color,numcolor;
+			//画圆
+			$('canvas').drawArc({
+				fillStyle: num_block.bc_color,
+				x: num_block.x,
+				y: num_block.y,
+				radius: 50
+			});
+			//画数字
+			$('canvas').drawText({
+				fillStyle: num_block.num_color,
+				strokeStyle: '#25a',
+				strokeWidth: 2,
+				x: num_block.x, 
+				y: num_block.y,
+				fontSize: 48,
+				fontFamily: 'Verdana, sans-serif',
+				text: num_block.num
+			})
+		}
+		
+		/**
+		 * 初始化全局变量
+		 */
+		function initVariable(){
+			num_array = [];
+			num_array_copy = [];
+			record_index_select =[];
+			cons_select= 0;
+			count = 0;
+			ball_is_move_ok = false;
+			ball_is_move = false;
+			removeBGColor();
+		}
+		/**
+		 * 绑定刷新按钮点击事件
+		 */
+		$("#refresh").on('click',function(){
+			//清理计时器
+			window.clearTimeout(timeOut_select);
+			window.clearTimeout(code_timeout);
+			//清空画布
+			$('canvas').clearCanvas();
+			
+			//初始化全局变量
+			initVariable();
+			//改变按钮状态
+			changeButtonStatus("#startSort",true);
+			changeButtonStatus("#stopSort",false);
+			//重新生成随机数组并渲染
+			createNumArray();
+			//执行排序，获得需要移动的数字的下标信息
+			selectSort();
+			
+		
+		});
+		/**
+		 * 绑定开始排序按钮点击事件
+		 */
+		$("#startSort").on("click",function(){
+			//改变按钮状态
+			changeButtonStatus("#startSort",false);
+			changeButtonStatus("#stopSort",true);
+			showCodeRunThread();
+			
+		
+		});
+		/**
+		 * 绑定停止按钮点击事件
+		 */
+		$("#stopSort").on('click',function(){
+			//改变按钮状态
+			changeButtonStatus("#startSort",true);
+			changeButtonStatus("#stopSort",false);
+			//清理计时器
+			window.clearTimeout(timeOut_select);
+			window.clearTimeout(code_timeout);
+		});
+
+		//工具类方法
+		/**
+		 * 改变按钮状态
+		 * @param {Object} el
+		 * @param {Object} bool
+		 */
+		function changeButtonStatus(el,bool){
+			if(bool){
+				$(el).attr("data-haveClick",false);
+				$(el).removeClass("disabled");
+			}
+			else {
+				$(el).attr("data-haveClick",true);
+				$(el).addClass("disabled");
+			}
+		}
+		
+		/**
+		 * 开始动画
+		 */
+		function startAnimate(){
+			rednder()
+	    	update();
+	    	if(ball_is_move_ok  != true){
+	    		//通过设置计时器产生移动的动画
+				timeOut_select = window.setTimeout("startAnimate()",1);
+			}
+			else ball_is_move_ok = false;
+	    }
+	    	
+		
+		
+		console.log(code_run_row_num.length);
+		console.log(code_run_row_num);
+		/**
+		 * 显示代码运行轨迹
+		 */
+		function showCodeRunThread(){
+
+			var time;
+			if(count == strong_list.length) {
+				window.clearTimeout(code_timeout);
+			}
+			
+			if(code_run_row_num[count] === 11) {
+				
+				window.clearTimeout(code_timeout);
+				startAnimate();
+				ball_is_move = true;
+				
+			}
+			
+			
+			addBGColor(code_run_row_num[count]);
+			count++;
+			if(ball_is_move != true){
+				code_timeout = setTimeout("showCodeRunThread()",500);
+			}
+			
+			
+		}
+		function addBGColor(rowNum){
+			removeBGColor();
+			$(strong_list[rowNum]).addClass("bg_yellow");
+			$(li_list[rowNum]).addClass("bg_yellow");
+			
+		}
+		
+		
+		/**
+		 * 移除带有高亮块的代码块
+		 */
+		function removeBGColor(){
+			if($(".col-lg-11 .bg_yellow") != null) $(".col-lg-11 .bg_yellow").removeClass('bg_yellow');
+			if($(".col-lg-1 .bg_yellow") != null) $(".col-lg-1 .bg_yellow").removeClass('bg_yellow');
+		}
+		
+		
+		</script>
+	</body>
+</html>
